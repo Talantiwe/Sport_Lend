@@ -1,0 +1,57 @@
+﻿<Window x:Class="Sport_Lend.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Sport_Lend"
+        mc:Ignorable="d"
+        Title="Sport_Lend" Height="600" Width="900" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFF3F1DC"/>
+                <GradientStop Color="#FF131311" Offset="1"/>
+                <GradientStop Color="#FFB1794A" Offset="0.157"/>
+                <GradientStop Color="#FF7D4F26" Offset="0.558"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="490"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Image Height="20" Width="20" HorizontalAlignment="Right" Margin="5,5,10,5" Source="/Photo/крест.png" MouseDown="Exit_Click" Cursor="Hand"/>
+            <Image Height="20" Width="20" HorizontalAlignment="Right" Margin="5,5,50,5" Source="/Photo/свернуть.png"/>
+            <TextBlock Margin="10,-3,619,3" x:Name="log_TextBlock" Visibility="Visible"/>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Image Margin="-74,0,736,0" Source="/Photo/logo1.jpg"/>
+            <Image Margin="788,10,27,10" Source="/Photo/basket.png" Cursor="Hand" MouseDown="Korz_Click" />
+        </Grid>
+
+        <Grid Grid.Row="2"  >
+            <Label x:Name="photo_TextBlock" Margin="74,36,666,306" Cursor="Hand"  />
+            <TextBlock x:Name="ns_TextBlock" Margin="74,189,683,265" FontSize="15" MouseDown="Pay_Click" />
+            <TextBlock x:Name="s_TextBlock" Margin="176,189,646,265" FontSize="15"/>
+            <Label x:Name="photo2_TextBlock" Margin="370,36,370,306" Cursor="Hand" />
+            <TextBlock x:Name="ns2_TextBlock" Margin="370,189,389,265" FontSize="15"  MouseDown="Pay2_Click" />
+            <TextBlock x:Name="s2_TextBlock" Margin="440,189,382,265" FontSize="15"/>
+            <Label x:Name="photo3_TextBlock" Margin="630,36,110,306" Cursor="Hand"/>
+            <TextBlock x:Name="ns3_TextBlock" Margin="630,189,110,265" FontSize="15" MouseDown="Pay3_Click" />
+            <TextBlock x:Name="s3_TextBlock" Margin="710,189,112,265" FontSize="15"/>
+            <Label x:Name="photo4_TextBlock" Margin="74,264,666,78" Cursor="Hand" />
+            <TextBlock x:Name="ns4_TextBlock" Margin="74,412,683,42" FontSize="15" MouseDown="Pay4_Click"/>
+            <TextBlock x:Name="s4_TextBlock" Margin="154,412,668,42" FontSize="15"/>
+            <Label x:Name="photo5_TextBlock" Margin="370,264,370,78" Cursor="Hand"/>
+            <TextBlock x:Name="ns5_TextBlock" Margin="370,417,389,37" FontSize="15" MouseDown="Pay5_Click"/>
+            <TextBlock x:Name="s5_TextBlock" Margin="511,417,311,37" FontSize="15" RenderTransformOrigin="0.224,0.487"/>
+            <Label x:Name="photo6_TextBlock" Margin="630,264,110,78" Cursor="Hand"/>
+            <TextBlock x:Name="ns6_TextBlock" Margin="630,417,110,37" FontSize="15" MouseDown="Pay6_Click"/>
+            <TextBlock x:Name="s6_TextBlock" Margin="759,417,63,37" FontSize="15"/>
+            
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Sport_LendModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Bascket">
+    <Key>
+      <PropertyRef Name="Id_Bascket" />
+    </Key>
+    <Property Name="Id_Bascket" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name_Product" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Sum" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Id_CLient" Type="Int32" />
+    <NavigationProperty Name="Client" Relationship="Self.FK_Bascket_Client" FromRole="Bascket" ToRole="Client" />
+    <NavigationProperty Name="Price" Relationship="Self.FK_Bascket_Price" FromRole="Bascket" ToRole="Price" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="Id_Client" />
+    </Key>
+    <Property Name="Id_Client" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="login" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="pass" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="Discount" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Bascket" Relationship="Self.FK_Bascket_Client" FromRole="Client" ToRole="Bascket" />
+    <Property Name="IsAuthorized" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Price">
+    <Key>
+      <PropertyRef Name="Id_Price" />
+    </Key>
+    <Property Name="Id_Price" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Prices" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Bascket" Relationship="Self.FK_Bascket_Price" FromRole="Price" ToRole="Bascket" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Bascket_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+    <End Role="Bascket" Type="Self.Bascket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="Id_Client" />
+      </Principal>
+      <Dependent Role="Bascket">
+        <PropertyRef Name="Id_CLient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bascket_Price">
+    <End Role="Price" Type="Self.Price" Multiplicity="1" />
+    <End Role="Bascket" Type="Self.Bascket" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Price">
+        <PropertyRef Name="Id_Price" />
+      </Principal>
+      <Dependent Role="Bascket">
+        <PropertyRef Name="Id_Bascket" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Sport_LendEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Bascket" EntityType="Self.Bascket" />
+    <EntitySet Name="Client" EntityType="Self.Client" />
+    <EntitySet Name="Price" EntityType="Self.Price" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <AssociationSet Name="FK_Bascket_Client" Association="Self.FK_Bascket_Client">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Bascket" EntitySet="Bascket" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bascket_Price" Association="Self.FK_Bascket_Price">
+      <End Role="Price" EntitySet="Price" />
+      <End Role="Bascket" EntitySet="Bascket" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
